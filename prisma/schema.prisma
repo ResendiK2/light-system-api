@@ -7,9 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
+// Define the model for Users (optional, if needed)
+model Client {
+  id           String    @id @default(uuid()) @map("client_id")
+  clientNumber String    @unique @map("client_number")
+  name         String
+  invoices     Invoice[]
+  createdAt    DateTime  @default(now()) @map("created_at")
+}
+
+model Invoice {
+  id                      Int      @id @default(autoincrement())
+  referenceMonth          DateTime @map("reference_month")
+  electricityConsumption  Float    @map("electricity_consumption_kwh")
+  electricityCost         Float    @map("electricity_cost")
+  sceeeElectricityKWh     Float    @map("sceee_electricity_kwh")
+  sceeeElectricityCost    Float    @map("sceee_electricity_cost")
+  compensatedEnergyKWh    Float    @map("compensated_energy_kwh")
+  compensatedEnergyCost   Float    @map("compensated_energy_cost")
+  municipalPublicLighting Float    @map("municipal_public_lighting")
+  createdAt               DateTime @default(now()) @map("created_at")
+  Client                  Client?  @relation(fields: [clientId], references: [id])
+  clientId                String?
+
+  @@unique([clientId, referenceMonth])
 }
