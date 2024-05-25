@@ -1,0 +1,29 @@
+{
+  "name": "light-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/http/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --poll src/http/server.ts",
+    "build": "tsc",
+    "start": "node dist/http/server.js",
+    "prisma": "prisma",
+    "docker-init": "docker-compose up --build -d",
+    "docker-go": "docker-compose up",
+    "docker-stop": "docker-compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "dotenv": "^16.4.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.0.0",
+    "fastify": "^4.0.0",
+    "prisma": "^4.0.0"
+  }
+}
