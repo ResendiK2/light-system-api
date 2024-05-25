@@ -8,7 +8,7 @@
     "build": "tsc",
     "start": "node dist/http/server.js",
     "prisma": "prisma",
-    "docker-init": "docker-compose up --build -d",
+    "docker-init": "docker-compose up --build",
     "docker-go": "docker-compose up",
     "docker-stop": "docker-compose down"
   },
