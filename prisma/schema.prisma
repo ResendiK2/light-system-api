@@ -7,9 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Define the model for Users (optional, if needed)
 model Client {
-  id           String    @id @default(uuid()) @map("client_id")
+  id           String    @id @default(uuid())
   clientNumber String    @unique @map("client_number")
   name         String
   invoices     Invoice[]
@@ -17,7 +16,7 @@ model Client {
 }
 
 model Invoice {
-  id                      Int      @id @default(autoincrement())
+  id                      String   @id @default(uuid())
   referenceMonth          DateTime @map("reference_month")
   electricityConsumption  Float    @map("electricity_consumption_kwh")
   electricityCost         Float    @map("electricity_cost")
